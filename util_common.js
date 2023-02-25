@@ -1,4 +1,7 @@
-import { JtStr, FtStr } from "./util_char";
+import {
+    JtStr,
+    FtStr
+} from "./util_char";
 
 // 繁体化
 export function traditionalized(cc) {
@@ -32,9 +35,9 @@ export function debounce(func, delay) {
     let timeout; //定时器
     return function (...argument) {
         // 判断定时器是否存在，存在的话进行清除，重新进行定时器计数
-        if (timeout) clearTimeout(timeout);//清除之前的事件
+        if (timeout) clearTimeout(timeout); //清除之前的事件
         timeout = setTimeout(() => {
-            func.call(this, ...argument);//执行事件
+            func.call(this, ...argument); //执行事件
         }, delay);
     }
 }
@@ -42,7 +45,7 @@ export function debounce(func, delay) {
 // 节流--定时器版
 // 节流(Throttle) 指的是连续触发事件但是在n秒中只执行一次函数。即不管你在指定时间内触发多少次函数，但是它只执行一次事件。(只有一次生效)
 export function throttle(func, delay) {
-    let timeout;//定义一个定时器标记
+    let timeout; //定义一个定时器标记
     return function (...argument) {
         // 判断是否存在定时器
         if (!timeout) {
@@ -55,4 +58,3 @@ export function throttle(func, delay) {
         }
     }
 }
-
