@@ -94,15 +94,25 @@ function mergeSort(arr) {
 
 // 快速排序
 function quickSort(arr) {
-    if (arr.length <= 1) return arr;
+    function helper(i, j) {
+        if (i >= j) return;
 
-    let pivot = arr[0];
-    let j = 1;
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] < pivot) {
-            [arr[i], arr[j]] = swap(arr[i], arr[j]);
-            j++;
+        let pivot = arr[i];
+        let y = i + 1;
+        for (let x = i + 1; x <= j; x++) {
+            if (arr[x] < pivot) {
+                let temp = arr[x];
+                arr[x] = arr[y];
+                arr[y++] = temp;
+            }
         }
+        arr[i] = arr[y - 1];
+        arr[y - 1] = pivot;
+
+        helper(i, y - 2);
+        helper(y, j);
     }
-    return [...quickSort(arr.slice(1, j)), pivot, ...quickSort(arr.slice(j))];
+
+    helper(0, arr.length - 1);
+    return arr;
 }
