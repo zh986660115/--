@@ -36,3 +36,16 @@ var spiralOrder = function (matrix) {
     return [...res, ...spiralOrder(newM)];
 };
 
+var reverseWords = function (s) {
+    let sArr = s.split(" ");
+    for (let word of sArr) {debugger
+        let left = 0, right = word.length - 1;
+        while (left < right) {
+            let t = word[left];
+            word[left++] = word[right];
+            word[right--] = t;
+        }
+        console.log("🚀 ~ file: mathTest.js:49 ~ reverseWords ~ word:", word)
+    }
+    return sArr.join(" ")
+};
